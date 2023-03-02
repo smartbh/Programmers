@@ -36,7 +36,8 @@ string solution(vector<string> participant, vector<string> completion) {
     {
         if( i.second > 0)
         {
-            answer = i.first;
+            answer = i.first; //만약 한명이 아니라 여러명을 말하라 하면
+            //벡터로 만들어서 출력함
             break;
         }
     }
