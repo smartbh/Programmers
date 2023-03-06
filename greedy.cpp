@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -8,6 +10,9 @@ using namespace std;
 //알고리즘의 각 단계에서 그 순간에 최적이라고 생각되는 것을 선택
 //매 단계의 선택이 마지막 해답의 최적성을 해치지 않을때
 
+
+// O(n)의 효율, for문을 쓰는법, N(학생의 수)와 체육복을 가져온 학생의 수가 비슷할때 효율적
+/*
 int solution(int n, vector<int> lost, vector<int> reserve) {
     int answer = 0;
     vector<int> u(n + 2,1); //전부 1로 초기화 전부 가지고 있다고 가정하는것
@@ -38,8 +43,29 @@ int solution(int n, vector<int> lost, vector<int> reserve) {
             answer++;
     }
 
+    return answer;
+}
+*/
 
-    
+// 만약 N(학생의수)가 엄청나게 큰데, 정작 체육복을 가져온 학생의 수가 적으면 낭비다
+//set과 map으로 새로 짜줘야 함
+int solution(int n, vector<int> lost, vector<int> reserve)
+{
+    unordered_set<int> l(lost.begin(),lost.end()); //원소들을 lost라는 벡터에 들어있는 원소로 초기화
+    set<int> r; //체육복을 여벌로 가져온 학생들
+    unordered_set<int> inter; //체육복을 가져왔는데 도난도 당한 학생들, L과 R의 교집합
+    int answer;
+
+    for(auto& x: reserve)
+    {
+        if(l.find(x) == l.end()) //l안에 x란 원소가 없으면 -> 도난 당하지 않음
+            r.insert(x);
+        else
+            inter.insert(x);
+    }
+
+    for(auto& x:inter) l.erase(x); //
+
     return answer;
 }
 
