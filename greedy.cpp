@@ -58,15 +58,20 @@ int solution(int n, vector<int> lost, vector<int> reserve)
 
     for(auto& x: reserve)
     {
-        if(l.find(x) == l.end()) //l안에 x란 원소가 없으면 -> 도난 당하지 않음
+        if(l.find(x) == l.end()) //l안에 x란 원소가 없으면 -> 도난 당하지 않음, 빌려줄수 있는 학생
             r.insert(x);
         else
             inter.insert(x);
     }
 
     for(auto& x:inter) l.erase(x); //
+    for(auto& x : r)
+    {
+        if(l.find(x-1) != l.end()) l.erase(x-1);//체육복을 빌려야 하는 학생이면
+        else if(l.find(x-1) != l.end() ) l.erase(x+1);
+    }
 
-    return answer;
+    return n-l.size();
 }
 
 int main()
