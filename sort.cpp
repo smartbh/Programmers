@@ -23,7 +23,7 @@ string solution(vector<int> numbers) {
         answer += to_string(numbers[i]);
     }
 
-    return answer;
+    return answer[0] == '0' ? "0" : answer;
 }
 
 int main()
