@@ -54,8 +54,7 @@ int solution(int n, vector<int> lost, vector<int> reserve)
     unordered_set<int> l(lost.begin(),lost.end()); //원소들을 lost라는 벡터에 들어있는 원소로 초기화
     set<int> r; //체육복을 여벌로 가져온 학생들
     unordered_set<int> inter; //체육복을 가져왔는데 도난도 당한 학생들, L과 R의 교집합
-    int answer;
-
+    
     for(auto& x: reserve)
     {
         if(l.find(x) == l.end()) //l안에 x란 원소가 없으면 -> 도난 당하지 않음, 빌려줄수 있는 학생
