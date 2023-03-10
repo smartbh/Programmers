@@ -67,6 +67,8 @@ int solution(vector<int> scoville, int K) { //스코빌, k = 목표 스코빌 �
     return answer;
 }
 
+//최대최소 빨리 꺼내야할때 -> 힙, 프라이어티 큐를 써야한다.
+
 int main()
 {
     vector<int> scoville = {1,2,3,9,10,11};
